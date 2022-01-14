@@ -145,6 +145,9 @@ export type Plugin =
       install: PluginInstallFunction
     }
 
+/**
+ * 创建默认配置
+ */
 export function createAppContext(): AppContext {
   return {
     app: null as any,

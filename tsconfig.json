@@ -29,6 +29,7 @@
     "packages/*/src",
     "packages/runtime-dom/types/jsx.d.ts",
     "packages/*/__tests__",
-    "test-dts"
+    "test-dts",
+    "temp"
   ]
 }
