@@ -192,6 +192,7 @@ export function createAppAPI<HostElement>(
 
     let isMounted = false
 
+    // 声明 app 实例
     const app: App = (context.app = {
       _uid: uid++,
       _component: rootComponent as ConcreteComponent,
@@ -283,6 +284,7 @@ export function createAppAPI<HostElement>(
         isSVG?: boolean
       ): any {
         if (!isMounted) {
+          // 未挂载 创建 虚拟 dom
           const vnode = createVNode(
             rootComponent as ConcreteComponent,
             rootProps
@@ -301,6 +303,7 @@ export function createAppAPI<HostElement>(
           if (isHydrate && hydrate) {
             hydrate(vnode as VNode<Node, Element>, rootContainer as any)
           } else {
+            // 渲染vnode到dom, 并挂载到 宿主元素rootContainer上去
             render(vnode, rootContainer, isSVG)
           }
           isMounted = true

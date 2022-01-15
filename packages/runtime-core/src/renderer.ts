@@ -350,9 +350,9 @@ function baseCreateRenderer(
   // Note: functions inside this closure should use `const xxx = () => {}`
   // style in order to prevent being inlined by minifiers.
   const patch: PatchFn = (
-    n1,
-    n2,
-    container,
+    n1, // 老节点
+    n2,     // 新节点
+    container, // 挂载容器
     anchor = null,
     parentComponent = null,
     parentSuspense = null,
@@ -418,6 +418,8 @@ function baseCreateRenderer(
             optimized
           )
         } else if (shapeFlag & ShapeFlags.COMPONENT) {
+          // 首次渲染
+          console.log(shapeFlag)
           processComponent(
             n1,
             n2,
@@ -1164,6 +1166,7 @@ function baseCreateRenderer(
           optimized
         )
       } else {
+        // 挂载组件
         mountComponent(
           n2,
           container,
@@ -1219,6 +1222,7 @@ function baseCreateRenderer(
       if (__DEV__) {
         startMeasure(instance, `init`)
       }
+      // 初始化实例, 初始化插槽, props, 相应依赖
       setupComponent(instance)
       if (__DEV__) {
         endMeasure(instance, `init`)
@@ -1299,6 +1303,7 @@ function baseCreateRenderer(
     isSVG,
     optimized
   ) => {
+    // 创建更新函数
     const componentUpdateFn = () => {
       if (!instance.isMounted) {
         let vnodeHook: VNodeHook | null | undefined
@@ -1537,13 +1542,14 @@ function baseCreateRenderer(
       }
     }
 
-    // create reactive effect for rendering
+    // create reactive effect for rendering 创建更新机制
     const effect = (instance.effect = new ReactiveEffect(
       componentUpdateFn,
       () => queueJob(instance.update),
       instance.scope // track it in component's effect scope
     ))
 
+    // 首次执行 组件更新
     const update = (instance.update = effect.run.bind(effect) as SchedulerJob)
     update.id = instance.uid
     // allowRecurse
@@ -2329,9 +2335,11 @@ function baseCreateRenderer(
     )
   }
 
+  // 返回渲染器对象
   return {
-    render,
-    hydrate,
+    render, // vnode to 虚拟dom
+    hydrate, // 服务器渲染相关 vnode to html
+    // 真正的 创建实例方法
     createApp: createAppAPI(render, hydrate)
   }
 }
