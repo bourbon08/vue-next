@@ -13,6 +13,7 @@ if (__DEV__) {
 
 const compileCache: Record<string, RenderFunction> = Object.create(null)
 
+// 定义编译器函数, 不同平台的编译器函数 不一样
 function compileToFunction(
   template: string | HTMLElement,
   options?: CompilerOptions
@@ -32,6 +33,7 @@ function compileToFunction(
     return cached
   }
 
+  // 用户传入的是选择器 如 #app
   if (template[0] === '#') {
     const el = document.querySelector(template)
     if (__DEV__ && !el) {
@@ -81,6 +83,7 @@ function compileToFunction(
   // mark the function as runtime compiled
   ;(render as InternalRenderFunction)._rc = true
 
+  // 缓存 编译记录 并返回 render
   return (compileCache[key] = render)
 }
 

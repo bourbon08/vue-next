@@ -15,10 +15,15 @@ nr dev core --formats cjs
 __DEV__=false nr dev
 ```
 */
-
+// 命令行 执行工具
+// eslint-disable-next-line no-restricted-globals
 const execa = require('execa')
+// eslint-disable-next-line no-restricted-globals
 const { fuzzyMatchTarget } = require('./utils')
+// 截取2 往后的
+// eslint-disable-next-line no-restricted-globals
 const args = require('minimist')(process.argv.slice(2))
+// 默认打包目标 vue
 const target = args._.length ? fuzzyMatchTarget(args._)[0] : 'vue'
 const formats = args.formats || args.f
 const sourceMap = args.sourcemap || args.s

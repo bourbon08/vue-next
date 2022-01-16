@@ -586,7 +586,9 @@ export function setupComponent(
   isInSSRComponentSetup = isSSR
 
   const { props, children } = instance.vnode
+  // 判断 组件是否有状态
   const isStateful = isStatefulComponent(instance)
+  // 属性和插槽的初始化
   initProps(instance, props, isStateful, isSSR)
   initSlots(instance, children)
 
@@ -652,6 +654,7 @@ function setupStatefulComponent(
     resetTracking()
     unsetCurrentInstance()
 
+    // 依据setup 执行返回结果的不同类型进行 if else 操作
     if (isPromise(setupResult)) {
       setupResult.then(unsetCurrentInstance, unsetCurrentInstance)
 
@@ -763,6 +766,7 @@ export function finishComponentSetup(
 
   // template / render function normalization
   // could be already set when returned from setup()
+  // 如果组件没有渲染, 生成渲染函数
   if (!instance.render) {
     // only do on-the-fly compile if not in SSR - SSR on-the-fly compilation
     // is done by server-renderer
@@ -814,6 +818,7 @@ export function finishComponentSetup(
   }
 
   // support for 2.x options
+  // 兼容 vue 2 的 options 语法: applyOptions
   if (__FEATURE_OPTIONS_API__ && !(__COMPAT__ && skipOptions)) {
     setCurrentInstance(instance)
     pauseTracking()

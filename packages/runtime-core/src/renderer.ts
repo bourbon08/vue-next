@@ -1195,6 +1195,7 @@ function baseCreateRenderer(
     // mounting
     const compatMountInstance =
       __COMPAT__ && initialVNode.isCompatRoot && initialVNode.component
+    // 创建组件实例
     const instance: ComponentInternalInstance =
       compatMountInstance ||
       (initialVNode.component = createComponentInstance(
@@ -1542,7 +1543,8 @@ function baseCreateRenderer(
       }
     }
 
-    // create reactive effect for rendering 创建更新机制
+    // create reactive effect for rendering
+    // 创建更新机制 并赋值给 instance.effect
     const effect = (instance.effect = new ReactiveEffect(
       componentUpdateFn,
       () => queueJob(instance.update),
@@ -1567,6 +1569,7 @@ function baseCreateRenderer(
       update.ownerInstance = instance
     }
 
+    // 此时才看到首屏界面
     update()
   }
 

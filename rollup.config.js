@@ -118,6 +118,7 @@ function createConfig(format, output, plugins = []) {
   // during a single build.
   hasTSChecked = true
 
+  // 入口文件
   let entryFile = /runtime$/.test(format) ? `src/runtime.ts` : `src/index.ts`
 
   // the compat build needs both default AND named exports. This will cause
