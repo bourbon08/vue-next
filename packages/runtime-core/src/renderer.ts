@@ -420,8 +420,8 @@ function baseCreateRenderer(
             optimized
           )
         } else if (shapeFlag & ShapeFlags.COMPONENT) {
-          // 首次渲染
-          console.log(shapeFlag)
+          // 首次 走这里
+          // console.log(shapeFlag)
           processComponent(
             n1,
             n2,
@@ -1199,7 +1199,7 @@ function baseCreateRenderer(
     // mounting
     const compatMountInstance =
       __COMPAT__ && initialVNode.isCompatRoot && initialVNode.component
-    // 创建组件实例
+    // 1.创建组件实例
     const instance: ComponentInternalInstance =
       compatMountInstance ||
       (initialVNode.component = createComponentInstance(
@@ -1227,7 +1227,7 @@ function baseCreateRenderer(
       if (__DEV__) {
         startMeasure(instance, `init`)
       }
-      // 初始化实例, 初始化插槽, props, 相应依赖
+      // 2.初始化实例, 初始化插槽, props, 相应依赖
       setupComponent(instance)
       if (__DEV__) {
         endMeasure(instance, `init`)
@@ -1247,7 +1247,7 @@ function baseCreateRenderer(
       }
       return
     }
-
+    // 3.安装渲染函数的副作用
     setupRenderEffect(
       instance,
       initialVNode,
@@ -1376,6 +1376,7 @@ function baseCreateRenderer(
           if (__DEV__) {
             startMeasure(instance, `render`)
           }
+          // 执行当前组件实例的render函数获得 vnode
           const subTree = (instance.subTree = renderComponentRoot(instance))
           if (__DEV__) {
             endMeasure(instance, `render`)
@@ -1550,7 +1551,7 @@ function baseCreateRenderer(
     // create reactive effect for rendering
     // 创建更新机制 并赋值给 instance.effect
     const effect = (instance.effect = new ReactiveEffect(
-      componentUpdateFn,
+      componentUpdateFn, // 此函数在响应式数据变化时会再次执行
       () => queueJob(instance.update),
       instance.scope // track it in component's effect scope
     ))
