@@ -72,7 +72,7 @@ export const createApp = ((...args) => {
     injectNativeTagCheck(app)
     injectCompilerOptionsCheck(app)
   }
-
+  //  提取mount， 再重新定义mount
   const { mount } = app
   app.mount = (containerOrSelector: Element | ShadowRoot | string): any => {
     const container = normalizeContainer(containerOrSelector)

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{title}}
+    </div>
+    <script>
+        let app = Vue.createApp({
+            data: () => ({
+                title: '标题title'
+            }),
+        })
+        app.mount('#app')
+    </script>
+</body>
+</html>
