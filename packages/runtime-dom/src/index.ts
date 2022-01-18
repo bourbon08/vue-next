@@ -75,10 +75,14 @@ export const createApp = ((...args) => {
   //  提取mount， 再重新定义mount
   const { mount } = app
   app.mount = (containerOrSelector: Element | ShadowRoot | string): any => {
+    // 由 #app 获得对应 dom 对象
     const container = normalizeContainer(containerOrSelector)
     if (!container) return
 
+    //
     const component = app._component
+    // component不是函数, 没有render函数, 没有模板
+    // 才赋值: component.template = container.innerHTML
     if (!isFunction(component) && !component.render && !component.template) {
       // __UNSAFE__
       // Reason: potential execution of JS expressions in in-DOM template.
@@ -102,6 +106,7 @@ export const createApp = ((...args) => {
 
     // clear content before mounting
     container.innerHTML = ''
+    // 此处 mount 见 apiCreateApp.ts
     const proxy = mount(container, false, container instanceof SVGElement)
     if (container instanceof Element) {
       container.removeAttribute('v-cloak')

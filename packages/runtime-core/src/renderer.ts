@@ -633,6 +633,7 @@ function baseCreateRenderer(
       // only do this in production since cloned trees cannot be HMR updated.
       el = vnode.el = hostCloneNode(vnode.el)
     } else {
+      // 创建节点
       el = vnode.el = hostCreateElement(
         vnode.type as string,
         isSVG,
@@ -718,6 +719,7 @@ function baseCreateRenderer(
     if (needCallTransitionHooks) {
       transition!.beforeEnter(el)
     }
+    // 插入节点
     hostInsert(el, container, anchor)
     if (
       (vnodeHook = props && props.onVnodeMounted) ||
@@ -1051,7 +1053,7 @@ function baseCreateRenderer(
   }
 
   const processFragment = (
-    n1: VNode | null,
+    n1: VNode | null, // 旧 node
     n2: VNode,
     container: RendererElement,
     anchor: RendererNode | null,
@@ -1170,7 +1172,7 @@ function baseCreateRenderer(
           optimized
         )
       } else {
-        // 挂载组件
+        // 挂载 vnode 到 container 上
         mountComponent(
           n2,
           container,
@@ -1207,7 +1209,8 @@ function baseCreateRenderer(
         parentComponent,
         parentSuspense
       ))
-
+    // 此时 instance  大部分 属性 都是空的
+    console.log('组件实例刚创建时: ', instance)
     if (__DEV__ && instance.type.__hmrId) {
       registerHMR(instance)
     }
@@ -1229,6 +1232,7 @@ function baseCreateRenderer(
       }
       // 2.初始化实例, 初始化插槽, props, 相应依赖
       setupComponent(instance)
+      console.log('组件实例已经初始化完: ', instance)
       if (__DEV__) {
         endMeasure(instance, `init`)
       }
@@ -1247,7 +1251,7 @@ function baseCreateRenderer(
       }
       return
     }
-    // 3.安装渲染函数的副作用
+    // 3.安装渲染函数的副作用, 并完成首屏渲染
     setupRenderEffect(
       instance,
       initialVNode,
@@ -1308,7 +1312,7 @@ function baseCreateRenderer(
     isSVG,
     optimized
   ) => {
-    // 创建更新函数
+    // 创建更新函数 200 行
     const componentUpdateFn = () => {
       if (!instance.isMounted) {
         let vnodeHook: VNodeHook | null | undefined
@@ -1376,7 +1380,7 @@ function baseCreateRenderer(
           if (__DEV__) {
             startMeasure(instance, `render`)
           }
-          // 执行当前组件实例的render函数获得 vnode
+          // 执行当前组件实例的render函数获得 vnode, subTree 会有 children
           const subTree = (instance.subTree = renderComponentRoot(instance))
           if (__DEV__) {
             endMeasure(instance, `render`)
@@ -1556,7 +1560,7 @@ function baseCreateRenderer(
       instance.scope // track it in component's effect scope
     ))
 
-    // 首次执行 组件更新
+    //  绑定this更新
     const update = (instance.update = effect.run.bind(effect) as SchedulerJob)
     update.id = instance.uid
     // allowRecurse
@@ -2343,7 +2347,7 @@ function baseCreateRenderer(
     )
   }
 
-  // 返回渲染器对象
+  // 返回渲染器对象 app
   return {
     render, // vnode to 虚拟dom
     hydrate, // 服务器渲染相关 vnode to html

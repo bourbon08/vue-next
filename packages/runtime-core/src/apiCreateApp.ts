@@ -288,11 +288,13 @@ export function createAppAPI<HostElement>(
           // 未挂载 创建 虚拟 dom
           const vnode = createVNode(
             rootComponent as ConcreteComponent,
-            rootProps
+            rootProps // 根props
           )
+
           // store app context on the root VNode.
           // this will be set on the root instance on initial mount.
           vnode.appContext = context
+          console.log('vnode', vnode)
 
           // HMR root reload
           if (__DEV__) {
@@ -304,7 +306,7 @@ export function createAppAPI<HostElement>(
           if (isHydrate && hydrate) {
             hydrate(vnode as VNode<Node, Element>, rootContainer as any)
           } else {
-            // 渲染vnode到dom, 并挂载到 宿主元素rootContainer上去
+            // 完成渲染 vnode 到 dom 的过程, 并挂载到 宿主元素rootContainer上去
             render(vnode, rootContainer, isSVG)
           }
           isMounted = true

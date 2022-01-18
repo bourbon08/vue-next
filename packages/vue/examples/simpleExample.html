@@ -9,13 +9,17 @@
 <body>
     <div id="app">
         <p>{{title}}</p>
+        <div>{{ '1' }}</div>
+        <div>2<div>3</div></div>
     </div>
     <script>
-        let app = Vue.createApp({
+        let app =  Vue.createApp({
             data: () => ({
                 title: '标题title'
             }),
+            // template: 'hello'
         })
+        console.log(app)
         app.mount('#app')
     </script>
 </body>
