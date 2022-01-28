@@ -31,7 +31,7 @@ importers:
       jest: ^27.1.0
       lint-staged: ^10.2.10
       lodash: ^4.17.15
-      marked: ^0.7.0
+      marked: ^4.0.10
       minimist: ^1.2.0
       npm-run-all: ^4.1.5
       prettier: ^2.3.1
@@ -79,7 +79,7 @@ importers:
       jest: 27.4.4
       lint-staged: 10.5.4
       lodash: 4.17.21
-      marked: 0.7.0
+      marked: 4.0.10
       minimist: 1.2.5
       npm-run-all: 4.1.5
       prettier: 2.5.1
@@ -104,7 +104,7 @@ importers:
     specifiers:
       '@babel/parser': ^7.16.4
       '@babel/types': ^7.16.0
-      '@vue/shared': 3.2.27
+      '@vue/shared': 3.2.29
       estree-walker: ^2.0.2
       source-map: ^0.6.1
     dependencies:
@@ -117,8 +117,8 @@ importers:
 
   packages/compiler-dom:
     specifiers:
-      '@vue/compiler-core': 3.2.27
-      '@vue/shared': 3.2.27
+      '@vue/compiler-core': 3.2.29
+      '@vue/shared': 3.2.29
     dependencies:
       '@vue/compiler-core': link:../compiler-core
       '@vue/shared': link:../shared
@@ -129,12 +129,12 @@ importers:
       '@babel/types': ^7.16.0
       '@types/estree': ^0.0.48
       '@types/lru-cache': ^5.1.0
-      '@vue/compiler-core': 3.2.27
-      '@vue/compiler-dom': 3.2.27
-      '@vue/compiler-ssr': 3.2.27
+      '@vue/compiler-core': 3.2.29
+      '@vue/compiler-dom': 3.2.29
+      '@vue/compiler-ssr': 3.2.29
       '@vue/consolidate': ^0.17.3
-      '@vue/reactivity-transform': 3.2.27
-      '@vue/shared': 3.2.27
+      '@vue/reactivity-transform': 3.2.29
+      '@vue/shared': 3.2.29
       estree-walker: ^2.0.2
       hash-sum: ^2.0.0
       lru-cache: ^5.1.1
@@ -172,15 +172,15 @@ importers:
 
   packages/compiler-ssr:
     specifiers:
-      '@vue/compiler-dom': 3.2.27
-      '@vue/shared': 3.2.27
+      '@vue/compiler-dom': 3.2.29
+      '@vue/shared': 3.2.29
     dependencies:
       '@vue/compiler-dom': link:../compiler-dom
       '@vue/shared': link:../shared
 
   packages/reactivity:
     specifiers:
-      '@vue/shared': 3.2.27
+      '@vue/shared': 3.2.29
     dependencies:
       '@vue/shared': link:../shared
 
@@ -189,8 +189,8 @@ importers:
       '@babel/core': ^7.16.0
       '@babel/parser': ^7.16.4
       '@babel/types': ^7.16.0
-      '@vue/compiler-core': 3.2.27
-      '@vue/shared': 3.2.27
+      '@vue/compiler-core': 3.2.29
+      '@vue/shared': 3.2.29
       estree-walker: ^2.0.2
       magic-string: ^0.25.7
     dependencies:
@@ -205,16 +205,16 @@ importers:
 
   packages/runtime-core:
     specifiers:
-      '@vue/reactivity': 3.2.27
-      '@vue/shared': 3.2.27
+      '@vue/reactivity': 3.2.29
+      '@vue/shared': 3.2.29
     dependencies:
       '@vue/reactivity': link:../reactivity
       '@vue/shared': link:../shared
 
   packages/runtime-dom:
     specifiers:
-      '@vue/runtime-core': 3.2.27
-      '@vue/shared': 3.2.27
+      '@vue/runtime-core': 3.2.29
+      '@vue/shared': 3.2.29
       csstype: ^2.6.8
     dependencies:
       '@vue/runtime-core': link:../runtime-core
@@ -223,16 +223,16 @@ importers:
 
   packages/runtime-test:
     specifiers:
-      '@vue/runtime-core': 3.2.27
-      '@vue/shared': 3.2.27
+      '@vue/runtime-core': 3.2.29
+      '@vue/shared': 3.2.29
     dependencies:
       '@vue/runtime-core': link:../runtime-core
       '@vue/shared': link:../shared
 
   packages/server-renderer:
     specifiers:
-      '@vue/compiler-ssr': 3.2.27
-      '@vue/shared': 3.2.27
+      '@vue/compiler-ssr': 3.2.29
+      '@vue/shared': 3.2.29
     dependencies:
       '@vue/compiler-ssr': link:../compiler-ssr
       '@vue/shared': link:../shared
@@ -244,7 +244,7 @@ importers:
       file-saver: ^2.0.5
       jszip: ^3.6.0
       vite: ^2.7.1
-      vue: 3.2.27
+      vue: 3.2.29
     dependencies:
       '@vue/repl': 0.4.8
       file-saver: 2.0.5
@@ -270,11 +270,11 @@ importers:
 
   packages/vue:
     specifiers:
-      '@vue/compiler-dom': 3.2.27
-      '@vue/compiler-sfc': 3.2.27
-      '@vue/runtime-dom': 3.2.27
-      '@vue/server-renderer': 3.2.27
-      '@vue/shared': 3.2.27
+      '@vue/compiler-dom': 3.2.29
+      '@vue/compiler-sfc': 3.2.29
+      '@vue/runtime-dom': 3.2.29
+      '@vue/server-renderer': 3.2.29
+      '@vue/shared': 3.2.29
     dependencies:
       '@vue/compiler-dom': link:../compiler-dom
       '@vue/compiler-sfc': link:../compiler-sfc
@@ -4978,9 +4978,9 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /marked/0.7.0:
-    resolution: {integrity: sha512-c+yYdCZJQrsRjTPhUx7VKkApw9bwDkNbHUKo1ovgcfDjb2kc8rLuRbIFyXL5WOEUwzSSKo3IXpph2K6DqB/KZg==}
-    engines: {node: '>=0.10.0'}
+  /marked/4.0.10:
+    resolution: {integrity: sha512-+QvuFj0nGgO970fySghXGmuw+Fd0gD2x3+MqCWLIPf5oxdv1Ka6b2q+z9RP01P/IaKPMEramy+7cNy/Lw8c3hw==}
+    engines: {node: '>= 12'}
     hasBin: true
     dev: true
 
