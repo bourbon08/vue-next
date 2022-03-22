@@ -1,0 +1,19 @@
+{
+  "files": [
+    {
+      "path": "packages/runtime-core/src/renderer.ts",
+      "bookmarks": [
+        {
+          "line": 319,
+          "column": 17,
+          "label": "baseCreateRenderer"
+        },
+        {
+          "line": 505,
+          "column": 17,
+          "label": "test"
+        }
+      ]
+    }
+  ]
+}
