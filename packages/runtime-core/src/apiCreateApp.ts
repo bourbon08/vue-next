@@ -182,6 +182,7 @@ export function createAppAPI<HostElement>(
   hydrate?: RootHydrateFunction
 ): CreateAppFunction<HostElement> {
   // 真正的 createApp 函数
+  // vue 工作方式: 组件 => 组件实例 => render() => vnode(虚拟dom) => 打补丁 patch() => 真实dom
   return function createApp(rootComponent, rootProps = null) {
     if (rootProps != null && !isObject(rootProps)) {
       __DEV__ && warn(`root props passed to app.mount() must be an object.`)

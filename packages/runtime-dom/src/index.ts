@@ -39,6 +39,7 @@ let renderer: Renderer<Element | ShadowRoot> | HydrationRenderer
 
 let enabledHydration = false
 
+// 返回渲染器
 function ensureRenderer() {
   // 单例模式
   return (
@@ -66,6 +67,7 @@ export const hydrate = ((...args) => {
 
 export const createApp = ((...args) => {
   // 创建 app 实例
+  // ensureRenderer 返回一个渲染器, 其中有createApp 方法
   const app = ensureRenderer().createApp(...args)
 
   if (__DEV__) {

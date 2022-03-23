@@ -318,6 +318,7 @@ function baseCreateRenderer(
 ): HydrationRenderer
 
 // implementation 在里面实现了 vnode diff patch
+// 代码很长, 返回的对象很简单, 只有两个属性
 function baseCreateRenderer(
   options: RendererOptions,
   createHydrationFns?: typeof createHydrationFunctions
@@ -2353,7 +2354,7 @@ function baseCreateRenderer(
   // 返回渲染器对象 app
   return {
     render, // vnode to 虚拟dom
-    hydrate, // 服务器渲染相关 vnode to html
+    hydrate, // 服务器渲染相关 vnode to html string
     // 真正的 创建实例方法
     createApp: createAppAPI(render, hydrate)
   }
