@@ -1,19 +1,59 @@
 {
-  "files": [
-    {
-      "path": "packages/runtime-core/src/renderer.ts",
-      "bookmarks": [
-        {
-          "line": 319,
-          "column": 17,
-          "label": "baseCreateRenderer"
-        },
-        {
-          "line": 505,
-          "column": 17,
-          "label": "test"
-        }
-      ]
-    }
-  ]
+	"files": [
+		{
+			"path": "packages/runtime-core/src/renderer.ts",
+			"bookmarks": [
+				{
+					"line": 321,
+					"column": 27,
+					"label": "baseCreateRenderer"
+				},
+				{
+					"line": 1214,
+					"column": 25,
+					"label": "组件实例刚创建时"
+				},
+				{
+					"line": 1236,
+					"column": 29,
+					"label": "组件实例已经初始化完"
+				},
+				{
+					"line": 2320,
+					"column": 14,
+					"label": "render"
+				},
+				{
+					"line": 2353,
+					"column": 16,
+					"label": "返回渲染器对象 app"
+				}
+			]
+		},
+		{
+			"path": "packages/runtime-core/src/apiCreateApp.ts",
+			"bookmarks": [
+				{
+					"line": 186,
+					"column": 27,
+					"label": "createApp"
+				},
+				{
+					"line": 283,
+					"column": 11,
+					"label": "mount"
+				}
+			]
+		},
+		{
+			"path": "packages/runtime-dom/src/index.ts",
+			"bookmarks": [
+				{
+					"line": 67,
+					"column": 22,
+					"label": "createApp"
+				}
+			]
+		}
+	]
 }

@@ -5,6 +5,20 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "pwa-msedge",
+      "request": "launch",
+      "name": "Open test.html1",
+      "webRoot": "${workspaceFolder}",
+      "url": "http://localhost:5500/packages/vue/examples/simpleExample.html"
+    },
+    {
+      "type": "pwa-msedge",
+      "request": "launch",
+      "name": "调试 simpleExample",
+      "webRoot": "${workspaceFolder}",
+      "file": "${workspaceFolder}/packages/vue/examples/simpleExample.html"
+    },
+    {
       "name": "Jest",
       "type": "node",
       "request": "launch",
@@ -21,7 +35,7 @@
       "console": "integratedTerminal",
       "sourceMaps": true,
       "windows": {
-        "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+        "program": "${workspaceFolder}/node_modules/jest/bin/jest"
       }
     }
   ]
