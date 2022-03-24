@@ -9,6 +9,11 @@
 					"label": "baseCreateRenderer"
 				},
 				{
+					"line": 354,
+					"column": 13,
+					"label": "patch"
+				},
+				{
 					"line": 1214,
 					"column": 25,
 					"label": "组件实例刚创建时"
@@ -24,7 +29,7 @@
 					"label": "render"
 				},
 				{
-					"line": 2353,
+					"line": 2354,
 					"column": 16,
 					"label": "返回渲染器对象 app"
 				}

@@ -2324,6 +2324,7 @@ function baseCreateRenderer(
         unmount(container._vnode, null, null, true)
       }
     } else {
+      // 首次渲染, container._vnode是空的, 所以首次patch会执行挂载过程
       patch(container._vnode || null, vnode, container, null, null, null, isSVG)
     }
     flushPostFlushCbs()

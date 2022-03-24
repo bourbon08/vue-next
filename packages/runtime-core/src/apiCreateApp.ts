@@ -287,7 +287,8 @@ export function createAppAPI<HostElement>(
         isSVG?: boolean
       ): any {
         if (!isMounted) {
-          // 未挂载 创建 虚拟 dom
+          // 未挂载 ,直接由根组件创建 虚拟 dom (vnode)
+          // 根组件不需要检查是否更新, 所以没了render
           const vnode = createVNode(
             rootComponent as ConcreteComponent,
             rootProps // 根props
