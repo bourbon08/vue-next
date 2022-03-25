@@ -83,7 +83,7 @@ export const createApp = ((...args) => {
 
     //
     const component = app._component
-    // component不是函数, 没有render函数, 没有模板
+    // component不是函数, 没有render函数, 没有模板, 根组件就会以 #app 下的模板
     // 才赋值: component.template = container.innerHTML
     if (!isFunction(component) && !component.render && !component.template) {
       // __UNSAFE__
