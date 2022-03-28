@@ -14,22 +14,22 @@
 					"label": "patch"
 				},
 				{
-					"line": 1214,
+					"line": 1215,
 					"column": 25,
 					"label": "组件实例刚创建时"
 				},
 				{
-					"line": 1236,
+					"line": 1237,
 					"column": 29,
 					"label": "组件实例已经初始化完"
 				},
 				{
-					"line": 2320,
+					"line": 2324,
 					"column": 14,
 					"label": "render"
 				},
 				{
-					"line": 2354,
+					"line": 2358,
 					"column": 16,
 					"label": "返回渲染器对象 app"
 				}

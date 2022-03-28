@@ -1203,6 +1203,7 @@ function baseCreateRenderer(
     // mounting
     const compatMountInstance =
       __COMPAT__ && initialVNode.isCompatRoot && initialVNode.component
+    // 组件挂载过程
     // 1.创建组件实例
     const instance: ComponentInternalInstance =
       compatMountInstance ||
@@ -1305,6 +1306,10 @@ function baseCreateRenderer(
     }
   }
 
+  // 1. 创建一个组件更新函数
+  //  1.1 render 获得vnode
+  //  1.2 patch(oldvnode, vnode)
+  // 2. 创建更新机制: new ReativeEffect(更新函数)
   const setupRenderEffect: SetupRenderEffectFn = (
     instance,
     initialVNode,
@@ -1453,8 +1458,7 @@ function baseCreateRenderer(
 
         // #2458: deference mount-only object parameters to prevent memleaks
         initialVNode = container = anchor = null as any
-      }
-      else {
+      } else {
         // updateComponent
         // This is triggered by mutation of component's own state (next: null)
         // OR parent calling processComponent (next: VNode)
@@ -1582,7 +1586,7 @@ function baseCreateRenderer(
       update.ownerInstance = instance
     }
 
-    // 此时才看到首屏界面
+    // 首次执行组件更新 此时才看到首屏界面
     update()
   }
 
