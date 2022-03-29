@@ -13,7 +13,8 @@ if (__DEV__) {
 
 const compileCache: Record<string, RenderFunction> = Object.create(null)
 
-// 定义编译器函数, 不同平台的编译器函数 不一样
+// 定义编译器函数, 专门为浏览器而写的
+// 不同平台的编译器函数 不一样
 function compileToFunction(
   template: string | HTMLElement,
   options?: CompilerOptions
