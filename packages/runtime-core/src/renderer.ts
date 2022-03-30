@@ -1322,6 +1322,7 @@ function baseCreateRenderer(
     // 创建更新函数 200 行
     const componentUpdateFn = () => {
       if (!instance.isMounted) {
+        // 组件未挂载时 走这
         let vnodeHook: VNodeHook | null | undefined
         const { el, props } = initialVNode
         const { bm, m, parent } = instance
@@ -1353,6 +1354,7 @@ function baseCreateRenderer(
             if (__DEV__) {
               startMeasure(instance, `render`)
             }
+            // 执行当前组件实例的render函数获取虚拟dom
             instance.subTree = renderComponentRoot(instance)
             if (__DEV__) {
               endMeasure(instance, `render`)
@@ -1395,7 +1397,7 @@ function baseCreateRenderer(
           if (__DEV__) {
             startMeasure(instance, `patch`)
           }
-          // 递归调用patch
+          // 递归调用patch, 将创建这些子元素
           patch(
             null,
             subTree,
